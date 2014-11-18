@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      #images { width: 100%; height: 100%;}
+    </style>
+  </head>
+  <body>
+    <div id="images"></div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+    var socket = io();
+    socket.on('new image', function(img){
+      $('#images').prepend($('<img>',{src: img}));
+    });
+
+  </script>
+</html>
