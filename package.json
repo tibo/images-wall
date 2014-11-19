@@ -1,7 +1,7 @@
 {
-  "name": "test-socket-io",
+  "name": "image-wall",
   "version": "0.0.1",
-  "description": "",
+  "description": "Just a simple image wall with real time update",
   "dependencies": {
     "express": "^4.10.2",
     "socket.io": "^1.2.0"

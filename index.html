@@ -1,23 +1,36 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>Image Wall</title>
     <style>
-      body { background-color: #6F6F6F;}
-      * { margin: 0; padding: 0; }
-      #images { width: 100%; height: 100%;}
-      #images > img { width: 20%; height: auto;}
+      body { 
+        background-color: #6F6F6F; 
+        margin: 0; 
+        padding: 0;
+      }
+
+      #wrapper {
+        width:100px;
+        height: 100px;
+        float: left;
+        overflow: hidden;
+      } 
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     </style>
   </head>
   <body>
-    <div id="images"></div>
   </body>
   <script src="/socket.io/socket.io.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
     var socket = io();
     socket.on('new image', function(img){
-      $('#images').prepend($('<img>',{src: img}));
+      $('body').prepend('<div id="wrapper"><img src="' + img + '" /></div>');
     });
 
   </script>
