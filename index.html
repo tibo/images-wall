@@ -9,7 +9,7 @@
         padding: 0;
       }
 
-      #wrapper {
+      .wrapper {
         width:120px;
         height: 120px;
         float: left;
@@ -29,8 +29,20 @@
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
     var socket = io();
+    var max_wrappers = 84;
+
     socket.on('new image', function(img){
-      $('body').prepend('<div id="wrapper"><img src="' + img + '" /></div>');
+      $('body').prepend('<div class="wrapper"><img src="' + img + '" /></div>');
+
+
+      var wrappers = $('.wrapper');
+      if(wrappers.length > max_wrappers)
+      {
+        var old_wrappers = wrappers.slice(max_wrappers, wrappers.length);
+        old_wrappers.each(function(index, value){
+          this.remove();
+        });
+      }
     });
 
   </script>
